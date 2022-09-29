@@ -54,14 +54,30 @@
 		1783E06D28E4D55D00940E3D /* POCCompositionalLayout */ = {
 			isa = PBXGroup;
 			children = (
+				17E4020028E5D97200F7137F /* Resources */,
+				17E401FF28E5D95100F7137F /* Supporting Files */,
 				1783E06E28E4D55D00940E3D /* AppDelegate.swift */,
 				1783E07028E4D55D00940E3D /* SceneDelegate.swift */,
 				1783E07228E4D55D00940E3D /* ViewController.swift */,
-				1783E07728E4D55F00940E3D /* Assets.xcassets */,
+			);
+			path = POCCompositionalLayout;
+			sourceTree = "<group>";
+		};
+		17E401FF28E5D95100F7137F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				1783E07928E4D55F00940E3D /* LaunchScreen.storyboard */,
 				1783E07C28E4D55F00940E3D /* Info.plist */,
 			);
-			path = POCCompositionalLayout;
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		17E4020028E5D97200F7137F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1783E07728E4D55F00940E3D /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
