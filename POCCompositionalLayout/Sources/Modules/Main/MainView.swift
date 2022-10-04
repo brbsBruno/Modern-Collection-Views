@@ -11,15 +11,15 @@ class MainView: UIView {
 
     // MARK: - Private properties
 
-    private enum Section: CaseIterable {
-        case main
+    private enum SectionLayoutKind: Int, CaseIterable {
+        case horizontal, vertical
     }
 
-    private var dataSource: UICollectionViewDiffableDataSource<Int, Int>! = nil
+    private var dataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Int>! = nil
 
-    private let collectionView = {
+    private lazy var collectionView = {
         let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: createCompositionalLayout())
+                                              collectionViewLayout: generateCollectionViewLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .systemBackground
         collectionView.register(MainCollectionViewCell.self,
@@ -43,23 +43,62 @@ class MainView: UIView {
 
     // MARK: - Private methods
 
-    private static func createCompositionalLayout() -> UICollectionViewLayout {
+    private func generateCollectionViewLayout() -> UICollectionViewLayout {
+        UICollectionViewCompositionalLayout { (sectionIndex: Int, _) -> NSCollectionLayoutSection? in
+            guard let sectionLayoutKind = SectionLayoutKind(rawValue: sectionIndex) else { return nil }
+
+            switch sectionLayoutKind {
+            case .horizontal: return self.generateHorizontalLayoutSection()
+            case .vertical: return self.generateVerticalLayoutSection()
+            }
+        }
+    }
+
+    private func generateHorizontalLayoutSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
                                               heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 2,
+                                                     leading: 2,
+                                                     bottom: 2,
+                                                     trailing: 2)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .fractionalWidth(0.5))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
         let section = NSCollectionLayoutSection(group: group)
-
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
+        section.orthogonalScrollingBehavior = .paging
+        section.contentInsets = NSDirectionalEdgeInsets(top: 20,
+                                                        leading: 20,
+                                                        bottom: 20,
+                                                        trailing: 20)
+        return section
     }
 
-    func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Int, Int>(collectionView: collectionView) {
+    private func generateVerticalLayoutSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 2,
+                                                     leading: 2,
+                                                     bottom: 2,
+                                                     trailing: 2)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .fractionalWidth(0.5))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 20,
+                                                        leading: 20,
+                                                        bottom: 20,
+                                                        trailing: 20)
+        return section
+    }
+
+    private func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<SectionLayoutKind, Int>(collectionView: collectionView) {
             (collectionView: UICollectionView,
              indexPath: IndexPath, identifier: Int) -> UICollectionViewCell in
 
@@ -71,17 +110,20 @@ class MainView: UIView {
             return cell
         }
 
-        // initial data
-        var snapshot = NSDiffableDataSourceSnapshot<Int, Int>()
-        var identifierOffset = 0
-        let itemsPerSection = 4
-        for section in 0..<5 {
-            snapshot.appendSections([section])
-            let maxIdentifier = identifierOffset + itemsPerSection
-            snapshot.appendItems(Array(identifierOffset..<maxIdentifier))
-            identifierOffset += itemsPerSection
-        }
+        let snapshot = snapshotForCurrentState()
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+
+    private func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<SectionLayoutKind, Int> {
+        let itemsPerSection = 10
+        var snapshot = NSDiffableDataSourceSnapshot<SectionLayoutKind, Int>()
+        SectionLayoutKind.allCases.forEach {
+            snapshot.appendSections([$0])
+            let itemOffset = $0.rawValue * itemsPerSection
+            let itemUpperbound = itemOffset + itemsPerSection
+            snapshot.appendItems(Array(itemOffset..<itemUpperbound))
+        }
+        return snapshot
     }
 }
 
