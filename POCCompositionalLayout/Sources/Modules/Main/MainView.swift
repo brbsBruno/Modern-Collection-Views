@@ -9,13 +9,14 @@ import UIKit
 
 class MainView: UIView {
 
+    // MARK: - Public properties
+
+    var viewModel: MainViewModel? = MainViewModel()
+
     // MARK: - Private properties
 
-    private enum SectionLayoutKind: Int, CaseIterable {
-        case horizontal, vertical
-    }
-
-    private var dataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Int>! = nil
+    private var dataSource: UICollectionViewDiffableDataSource<Section, SectionItem>! = nil
+    private var currentSnapshot: NSDiffableDataSourceSnapshot<Section, SectionItem>! = nil
 
     private lazy var collectionView = {
         let collectionView = UICollectionView(frame: .zero,
@@ -28,6 +29,13 @@ class MainView: UIView {
     }()
 
     // MARK: - Initializers
+
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
+        setupViewCode()
+        configureDataSource()
+    }
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -45,11 +53,10 @@ class MainView: UIView {
 
     private func generateCollectionViewLayout() -> UICollectionViewLayout {
         UICollectionViewCompositionalLayout { (sectionIndex: Int, _) -> NSCollectionLayoutSection? in
-            guard let sectionLayoutKind = SectionLayoutKind(rawValue: sectionIndex) else { return nil }
-
-            switch sectionLayoutKind {
-            case .horizontal: return self.generateHorizontalLayoutSection()
-            case .vertical: return self.generateVerticalLayoutSection()
+            let section = self.dataSource.snapshot().sectionIdentifiers[sectionIndex]
+            switch section.type {
+            case .videos: return self.generateHorizontalLayoutSection()
+            case .articles: return self.generateVerticalLayoutSection()
             }
         }
     }
@@ -98,12 +105,10 @@ class MainView: UIView {
     }
 
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<SectionLayoutKind, Int>(collectionView: collectionView) {
-            (collectionView: UICollectionView,
-             indexPath: IndexPath, identifier: Int) -> UICollectionViewCell in
-
+        dataSource = UICollectionViewDiffableDataSource<Section, SectionItem>(collectionView: collectionView) { collectionView, indexPath, _ in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier,
-                                                                for: indexPath) as? MainCollectionViewCell else {                return UICollectionViewCell()
+                                                                for: indexPath) as? MainCollectionViewCell else {
+                return UICollectionViewCell()
             }
 
             cell.label.text = "\(indexPath.section), \(indexPath.item)"
@@ -114,14 +119,17 @@ class MainView: UIView {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 
-    private func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<SectionLayoutKind, Int> {
-        let itemsPerSection = 10
-        var snapshot = NSDiffableDataSourceSnapshot<SectionLayoutKind, Int>()
-        SectionLayoutKind.allCases.forEach {
-            snapshot.appendSections([$0])
-            let itemOffset = $0.rawValue * itemsPerSection
-            let itemUpperbound = itemOffset + itemsPerSection
-            snapshot.appendItems(Array(itemOffset..<itemUpperbound))
+    private func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Section, SectionItem> {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, SectionItem>()
+        snapshot.appendSections(viewModel!.items)
+        viewModel?.items.forEach { section in
+            if let articles = section.articles {
+                snapshot.appendItems(articles.map(SectionItem.article), toSection: section)
+            }
+
+            if let videos = section.videos {
+                snapshot.appendItems(videos.map(SectionItem.video), toSection: section)
+            }
         }
         return snapshot
     }

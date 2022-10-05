@@ -13,6 +13,7 @@
 		1783E07828E4D55F00940E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1783E07728E4D55F00940E3D /* Assets.xcassets */; };
 		1783E07B28E4D55F00940E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1783E07928E4D55F00940E3D /* LaunchScreen.storyboard */; };
 		17B0DFDA28EB528E0001755D /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0DFD928EB528E0001755D /* MainCollectionViewCell.swift */; };
+		17B0DFDC28EC93480001755D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0DFDB28EC93480001755D /* MainViewModel.swift */; };
 		17E5CB8B28E5DBFE00B3791D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E5CB8A28E5DBFE00B3791D /* MainView.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		1783E07A28E4D55F00940E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1783E07C28E4D55F00940E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17B0DFD928EB528E0001755D /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		17B0DFDB28EC93480001755D /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		17E5CB8A28E5DBFE00B3791D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 				17E5CB8A28E5DBFE00B3791D /* MainView.swift */,
 				1783E07228E4D55D00940E3D /* MainViewController.swift */,
 				17B0DFD928EB528E0001755D /* MainCollectionViewCell.swift */,
+				17B0DFDB28EC93480001755D /* MainViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			files = (
 				1783E07328E4D55D00940E3D /* MainViewController.swift in Sources */,
 				17E5CB8B28E5DBFE00B3791D /* MainView.swift in Sources */,
+				17B0DFDC28EC93480001755D /* MainViewModel.swift in Sources */,
 				17B0DFDA28EB528E0001755D /* MainCollectionViewCell.swift in Sources */,
 				1783E06F28E4D55D00940E3D /* AppDelegate.swift in Sources */,
 				1783E07128E4D55D00940E3D /* SceneDelegate.swift in Sources */,
