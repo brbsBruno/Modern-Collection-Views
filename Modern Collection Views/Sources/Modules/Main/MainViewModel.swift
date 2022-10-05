@@ -1,6 +1,6 @@
 //
 //  MainModel.swift
-//  POCCompositionalLayout
+//  Modern Collection Views
 //
 //  Created by Bruno Barbosa on 04/10/22.
 //

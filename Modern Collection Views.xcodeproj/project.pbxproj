@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1783E06B28E4D55D00940E3D /* POCCompositionalLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POCCompositionalLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1783E06B28E4D55D00940E3D /* Modern Collection Views.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Modern Collection Views.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1783E06E28E4D55D00940E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1783E07028E4D55D00940E3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1783E07228E4D55D00940E3D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		1783E06228E4D55D00940E3D = {
 			isa = PBXGroup;
 			children = (
-				1783E06D28E4D55D00940E3D /* POCCompositionalLayout */,
+				1783E06D28E4D55D00940E3D /* Modern Collection Views */,
 				1783E06C28E4D55D00940E3D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,19 +52,19 @@
 		1783E06C28E4D55D00940E3D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1783E06B28E4D55D00940E3D /* POCCompositionalLayout.app */,
+				1783E06B28E4D55D00940E3D /* Modern Collection Views.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1783E06D28E4D55D00940E3D /* POCCompositionalLayout */ = {
+		1783E06D28E4D55D00940E3D /* Modern Collection Views */ = {
 			isa = PBXGroup;
 			children = (
 				17E4020028E5D97200F7137F /* Resources */,
 				17E4020128E5DAA500F7137F /* Sources */,
 				17E401FF28E5D95100F7137F /* Supporting Files */,
 			);
-			path = POCCompositionalLayout;
+			path = "Modern Collection Views";
 			sourceTree = "<group>";
 		};
 		17E401FF28E5D95100F7137F /* Supporting Files */ = {
@@ -124,9 +124,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1783E06A28E4D55D00940E3D /* POCCompositionalLayout */ = {
+		1783E06A28E4D55D00940E3D /* Modern Collection Views */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1783E07F28E4D55F00940E3D /* Build configuration list for PBXNativeTarget "POCCompositionalLayout" */;
+			buildConfigurationList = 1783E07F28E4D55F00940E3D /* Build configuration list for PBXNativeTarget "Modern Collection Views" */;
 			buildPhases = (
 				1783E06728E4D55D00940E3D /* Sources */,
 				1783E06828E4D55D00940E3D /* Frameworks */,
@@ -136,9 +136,9 @@
 			);
 			dependencies = (
 			);
-			name = POCCompositionalLayout;
+			name = "Modern Collection Views";
 			productName = POCCompositionalLayout;
-			productReference = 1783E06B28E4D55D00940E3D /* POCCompositionalLayout.app */;
+			productReference = 1783E06B28E4D55D00940E3D /* Modern Collection Views.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -156,7 +156,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1783E06628E4D55D00940E3D /* Build configuration list for PBXProject "POCCompositionalLayout" */;
+			buildConfigurationList = 1783E06628E4D55D00940E3D /* Build configuration list for PBXProject "Modern Collection Views" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -169,7 +169,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1783E06A28E4D55D00940E3D /* POCCompositionalLayout */,
+				1783E06A28E4D55D00940E3D /* Modern Collection Views */,
 			);
 		};
 /* End PBXProject section */
@@ -336,7 +336,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "POCCompositionalLayout/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "Modern Collection Views/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -347,7 +347,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = brbsBruno.POCCompositionalLayout;
+				PRODUCT_BUNDLE_IDENTIFIER = brbsBruno.ModernCollectionViews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -363,7 +363,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "POCCompositionalLayout/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "Modern Collection Views/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -374,7 +374,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = brbsBruno.POCCompositionalLayout;
+				PRODUCT_BUNDLE_IDENTIFIER = brbsBruno.ModernCollectionViews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -385,7 +385,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1783E06628E4D55D00940E3D /* Build configuration list for PBXProject "POCCompositionalLayout" */ = {
+		1783E06628E4D55D00940E3D /* Build configuration list for PBXProject "Modern Collection Views" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1783E07D28E4D55F00940E3D /* Debug */,
@@ -394,7 +394,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1783E07F28E4D55F00940E3D /* Build configuration list for PBXNativeTarget "POCCompositionalLayout" */ = {
+		1783E07F28E4D55F00940E3D /* Build configuration list for PBXNativeTarget "Modern Collection Views" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1783E08028E4D55F00940E3D /* Debug */,
